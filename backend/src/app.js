@@ -16,10 +16,12 @@ app.use(cookieParser())
 
 //routes
 
-import userRouter from "./routes/user.routes.js"
+import userRouter from "./routes/user.routes.js";
+import cardRouter from "./routes/card.routes.js";
 
 app.get("/", (req, res) => res.send("Backend of frontend"));
 
 app.use("/api/v1/users", userRouter)
+app.use("/api/v1/cards", cardRouter)
 
 export { app };

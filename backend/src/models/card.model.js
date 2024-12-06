@@ -19,10 +19,6 @@ const cardSchema = new Schema(
             type: Number,
             default: 0,
         },
-        isPublished: {
-            type: Boolean,
-            default: true,
-        },
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User",
@@ -35,4 +31,4 @@ const cardSchema = new Schema(
 
 cardSchema.plugin(mongooseAggregatePaginate);
 
-export const Video = mongoose.model("Card", cardSchema);
+export const Card = mongoose.model("Card", cardSchema);

@@ -11,4 +11,4 @@ const followSchema = new Schema({
     },
 }, { timestamps: true })
 
-export const Subscription = mongoose.model("Follow", followSchema)
+export const Follow = mongoose.model("Follow", followSchema)
