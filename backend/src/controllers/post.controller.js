@@ -224,23 +224,24 @@ const deleteCard = asyncHandler(async (req, res) => {
     if (card?.owner.toString() !== req.user?._id.toString()) {
         throw new ApiError(401, "You do not have permission to delete this card");
     }
-
-    await Card.findByIdAndDelete(cardId);
-
-    const videoFileUrl = card?.videoFile;
+    
+    const videoFileUrl = card?.file;
+    console.log(videoFileUrl);
+    
     const regex = /\/([^/]+)\.[^.]+$/;
     let match = videoFileUrl.match(regex);
     if (!match) {
         throw new ApiError(400, "Couldn't find Public ID of Card");
     }
-
-    publicId = match[1];
+    let publicId = match[1];
     const deleteVideoFile = await deleteFromCloudinary(publicId, "video");
-
+    
     if (deleteVideoFile.result !== "ok") {
         throw new ApiError(500, "Error while deleting video from Cloudinary");
     }
 
+    await Card.findByIdAndDelete(cardId);
+    
     return res
         .status(200)
         .json(new ApiResponse(200, {}, "Video deleted successfully"));

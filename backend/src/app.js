@@ -18,10 +18,12 @@ app.use(cookieParser())
 
 import userRouter from "./routes/user.routes.js";
 import cardRouter from "./routes/card.routes.js";
+import likeRouter from "./routes/like.routes.js";
 
 app.get("/", (req, res) => res.send("Backend of frontend"));
 
-app.use("/api/v1/users", userRouter)
-app.use("/api/v1/cards", cardRouter)
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/cards", cardRouter);
+app.use("/api/v1/likes", likeRouter);
 
 export { app };
