@@ -1,17 +1,20 @@
 "use client"
+import { assets } from '@/Assets/assets';
+import Image from 'next/image';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 const page = () => {
-    const [credentials, setCredentials] = useState({ name: "",email: "", password: "", cpassword: "" });
+    const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "", image: "" });
 
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
-      }
+    }
     return (
         <div className='flex flex-col gap-10 m-auto justify-center items-center'>
             <h2 className='font-bold text-4xl '>Welcome To CoderStack!</h2>
             <form className='flex flex-col gap-2' onSubmit={() => { }}>
+
                 <div className="mb-3">
                     <input type="text" className="form-control border-2 border-[#848484] p-3 rounded-sm w-80" placeholder='Name' value={credentials.name} onChange={onChange} id="name" name="name" />
                 </div>
