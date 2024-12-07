@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const page = () => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -22,8 +24,8 @@ const page = () => {
             // save the auth token
             localStorage.setItem('token', json.authToken);
             router.push('/')
-            console.log("Login successfully");
-            
+            console.log(response.data);
+            toast("Login Successfully");      
         }
         else {
             console.log("FAILED! Login UNsuccessfully");
@@ -36,6 +38,7 @@ const page = () => {
     }
     return (
         <div className='flex flex-col gap-10 m-auto justify-center items-center'>
+            <ToastContainer />
             <h2 className='font-bold text-4xl '>Welcome To CoderStack!</h2>
             <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
                 <div className="mb-3">
