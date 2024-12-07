@@ -13,11 +13,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} flex flex-col min-h-screen bg-no-repeat bg-center bg-cover z-0`}>
+      <body className={`${outfit.className}`}>
       <Header />
+      <div className="flex flex-col min-h-screen bg-no-repeat bg-center bg-cover z-0">
         {children}
-      </body>
+      </div>
       <Footer />
+      </body>
     </html>
   );
 }
