@@ -24,7 +24,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 
 const registerUser = asyncHandler(async (req, res) => {
 
-    const { fullName, email, username, password } = req.body
+    const { fullName, email, username, password } = req.body;
     //console.log("email: ", email);
 
     if (
@@ -41,24 +41,12 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "User with this email or username already exist.");
     }
 
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-
-    if (!avatarLocalPath) {
-        throw new ApiError(400, "Avatar file is required.");
-    }
-
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
-
-    if (!avatar) {
-        throw new ApiError(400, "Avatar file is required.");
-    }
-
     const user = await User.create({
         fullName,
         avatar: "./user.jpg",
         email,
         password,
-        username: username.toLowerCase(),
+        username: username,
     });
 
     const createdUser = await User.findById(user._id).select(
