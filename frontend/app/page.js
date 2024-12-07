@@ -54,8 +54,8 @@ export default function Home() {
   };
 
   return (
-    <div className="mx-auto my-4">
-      <div className="flex flex-col w-[32rem] gap-6 border-x-[1px] border-gray-500">
+    <div className="mx-auto my-4 border-gray-500">
+      <div className="flex flex-col w-[32rem] gap-6 border-x-[1px] border-gray-500 py-1">
         {posts.map((post) => {
           return (<div key={post._id} className="w-full bg-white">
             <div className="flex flex-row items-center text-center gap-3 pb-2">
@@ -64,9 +64,9 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-2 justify-center items-center border-y-[1px] border-gray-500">
               {detectCloudinaryFileType(post.file) == "image" && <img src={post.file} className="w-[100%] h-[95%]" alt="Post_Image" />}
-              {detectCloudinaryFileType(post.file) == "video" && <video src={post.file} />}
+              {detectCloudinaryFileType(post.file) == "video" && <video src={post.file} autoPlay muted />}
             </div>
-            <Link href="" className="flex flex-col gap-2">
+            <Link href={`card/${post._id}`} className="flex flex-col gap-1 px-2 hover:bg-gray-100 py-1">
               <h2 className="text-lg font-semibold pl-2">
                 <span className="font-medium gap-5">
                   <span>{(new Date(post.createdAt).toLocaleString(undefined, { timeZone: 'Asia/Kolkata' })).split(",")[0]}</span>
