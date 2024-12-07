@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { toast } from 'react-toastify'
 
 const Navbar = () => {
     const pathName = usePathname();
@@ -12,7 +11,6 @@ const Navbar = () => {
     const handleLogOut = () => {
         localStorage.removeItem('token');
         router.push('/login')
-        toast.success("LogOut Successfully")
 
     }
 
