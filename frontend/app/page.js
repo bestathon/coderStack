@@ -1,8 +1,22 @@
-import { assets } from "@/Assets/assets";
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useRouter } from 'next/navigation'
+import { assets } from "@/Assets/assets";
 
 export default function Home() {
+  const router = useRouter()
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      // getNotes();
+    }
+    else {
+      router.push('/login')
+    }
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <div className="mx-auto my-2">
       <div className="flex flex-col w-[30rem] p-2 gap-6">
